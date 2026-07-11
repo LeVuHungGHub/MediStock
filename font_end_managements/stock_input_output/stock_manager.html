@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaKeep - Outbound Management</title>
+    <link rel="stylesheet" href="stock_manager.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- SIDEBAR CHUNG -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                </div>
+                <div class="brand-info">
+                    <span class="brand-name">PharmaKeep</span>
+                    <span class="brand-sub">Pharmacy System</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <p class="menu-label">MENU</p>
+                <ul class="menu-list">
+                    <li><a href="#" class="menu-item">Dashboard</a></li>
+                    <li><a href="#" class="menu-item">Medicine Catalog</a></li>
+                    <li><a href="#" class="menu-item active">Stock In/Out</a></li>
+                    <li><a href="#" class="menu-item">Suppliers</a></li>
+                    <li><a href="#" class="menu-item">Reports & Analytics</a></li>
+                    <li><a href="#" class="menu-item">Settings</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-user">
+                <div class="user-avatar-box"><span class="user-initials"></span></div>
+                <div class="user-info">
+                    <span class="user-name"></span> <!-- Tên người dùng -->
+                    <span class="user-role"></span> <!-- Vai trò người dùng -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- NỘI DUNG CHÍNH -->
+        <main class="main-content">
+            <!-- HEADER CHUNG -->
+            <header class="top-header">
+                <div class="search-wrapper">
+                    <input type="text" placeholder="Search system..." class="search-input">
+                </div>
+                <div class="header-actions">
+                    <div class="lang-selector">
+                        <span class="lang-text">EN</span>
+                    </div>
+                    <div class="small-profile-avatar"><span class="avatar-text"></span></div>
+                </div>
+            </header>
+
+            <!-- ========================================== -->
+            <!-- VIEW 1: OUTBOUND LIST (Danh sách phiếu)    -->
+            <!-- ========================================== -->
+            <div id="list-view">
+                <div class="breadcrumb">
+                    <a href="#">Stock Management</a>
+                    <span>> Outbound History</span>
+                </div>
+
+                <div class="page-header">
+                    <div class="header-left">
+                        <h1 class="page-title">Stock Outbound Receipts</h1>
+                        <p class="page-subtitle">Track and audit the complete history of all inventory items dispatched.
+                        </p>
+                    </div>
+                    <a href="#" class="btn-create-outbound">New Outbound Stock</a>
+                </div>
+
+                <form action="" method="GET" class="filter-card">
+                    <div class="filter-grid">
+                        <div class="filter-group">
+                            <label>Dispatch Reason</label>
+                            <select name="reason">
+                                <option value="">All Reasons</option>
+                                <!-- Các option bộ lọc có thể render từ DB hoặc giữ nguyên nếu là dữ liệu cố định -->
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Dispatched Date</label>
+                            <input type="date" name="filter_date">
+                        </div>
+                        <div class="filter-group">
+                            <label>Status</label>
+                            <select name="status">
+                                <option value="">All Statuses</option>
+                                <!-- Các option bộ lọc trạng thái -->
+                            </select>
+                        </div>
+                        <div class="filter-group action-align">
+                            <button type="submit" class="btn-filter-submit">Apply Filters</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="table-section-container">
+                    <div class="table-responsive-wrapper">
+                        <table class="receipts-data-table">
+                            <thead>
+                                <tr>
+                                    <th>Outbound ID</th>
+                                    <th>Reason / Purpose</th>
+                                    <th>Dispatched Date</th>
+                                    <th>Total Quantity</th>
+                                    <th>Status</th>
+                                    <th style="text-align: center;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- BẮT ĐẦU VÒNG LẶP ĐỔ DỮ LIỆU DANH SÁCH -->
+
+                                <!-- Dòng mẫu cấu trúc, khi code bạn bọc vòng lặp vào thẻ <tr> này -->
+                                <!-- 
+                                <tr>
+                                    <td class="id-cell"></td>
+                                    <td class="reason-cell"></td>
+                                    <td class="date-cell"></td>
+                                    <td class="qty-cell text-danger-weight"></td>
+                                    <td></td>
+                                    <td style="text-align: center;">
+                                        <a href="#" class="btn-action-view" title="View Details">View</a>
+                                    </td>
+                                </tr> 
+                                -->
+
+                                <!-- KẾT THÚC VÒNG LẶP -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- VIEW 2: OUTBOUND DETAILS (Chi tiết phiếu)  -->
+            <!-- ========================================== -->
+            <div id="details-view" style="margin-top: 40px; border-top: 2px dashed #e5e7eb; padding-top: 40px;">
+                <div class="breadcrumb">
+                    <a href="#">Stock Outbound Receipts</a>
+                    <span>> Outbound Details</span>
+                </div>
+
+                <div class="page-header">
+                    <div class="header-left">
+                        <div class="title-with-badge">
+                            <h1 class="page-title">Outbound #<!-- Đổ ID vào đây --></h1>
+                            <!-- Đổ thẻ span status vào đây (VD: <span class="status-pill status-dispatched">Dispatched</span>) -->
+                        </div>
+                        <p class="page-subtitle">Audited record of medicines dispatched from internal stock inventory.
+                        </p>
+                    </div>
+
+                    <div class="header-right-buttons">
+                        <button type="button" class="btn-secondary-action" onclick="window.print();">Print
+                            Document</button>
+                        <a href="#" class="btn-back-list">Back to List</a>
+                    </div>
+                </div>
+
+                <div class="meta-information-grid">
+                    <div class="info-card">
+                        <span class="info-card-label">Dispatch Purpose & Target</span>
+                        <div class="info-card-content">
+                            <h4 class="entity-title"></h4> <!-- Tên đối tượng nhận -->
+                            <p class="entity-subtext"></p> <!-- Địa chỉ / Nhánh -->
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <span class="info-card-label">Execution Logs</span>
+                        <div class="info-card-content">
+                            <div class="meta-data-row">
+                                <span class="row-label">Dispatched Date:</span>
+                                <span class="row-value"></span> <!-- Đổ Ngày xuất -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card summary-highlight">
+                        <span class="info-card-label text-white-opacity">Total Valuation Deducted</span>
+                        <div class="info-card-content">
+                            <span class="total-cost-amount"></span> <!-- Đổ Tổng tiền -->
+                            <div class="totals-breakdown">
+                                <span></span> • <span></span> <!-- Đổ Số loại SKU và Tổng đơn vị sản phẩm -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-section-container">
+                    <h3 class="table-section-title">Dispatched Line Items & Stock Lots Affected</h3>
+                    <div class="table-responsive-wrapper">
+                        <table class="details-data-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%;">#</th>
+                                    <th style="width: 35%;">Medicine Name & Generic Formula</th>
+                                    <th style="width: 15%;">Batch / Lot Number</th>
+                                    <th style="text-align: right; width: 10%;">Qty Deducted</th>
+                                    <th style="text-align: right; width: 10%;">Total Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- BẮT ĐẦU VÒNG LẶP ĐỔ DỮ LIỆU CHI TIẾT SẢN PHẨM -->
+
+                                <!-- Dòng mẫu cấu trúc -->
+                                <!--
+                                <tr>
+                                    <td class="index-cell"></td>
+                                    <td>
+                                        <div class="medicine-info-box">
+                                            <span class="medicine-name"></span>
+                                            <span class="medicine-generic"></span>
+                                        </div>
+                                    </td>
+                                    <td class="batch-cell"></td>
+                                    <td style="text-align: right;" class="font-numeric qty-deducted-highlight"></td>
+                                    <td style="text-align: right;" class="font-numeric cost-highlight"></td>
+                                </tr>
+                                -->
+
+                                <!-- KẾT THÚC VÒNG LẶP -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="receipt-footer-calculation">
+                        <div class="calculation-box">
+                            <div class="calc-row total-row">
+                                <span>Total Dispatched Valuation:</span>
+                                <span class="font-numeric"></span> <!-- Đổ Tổng tiền của cả phiếu -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-section-card">
+                    <h4>Authorization Remarks / Dispatch Justification</h4>
+                    <p class="notes-content"></p> <!-- Đổ ghi chú phiếu xuất -->
+                </div>
+            </div>
+
+        </main>
+    </div>
+</body>
+
+</html>

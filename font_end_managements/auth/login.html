@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaKeep - Đăng nhập</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <div class="ambient-background">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="scene" id="scene">
+
+        <!-- CÂY DÙ / ĐÈN KÉO DÂY -->
+        <div class="lamp-rig" id="lampRig">
+            <div class="lamp-glow" aria-hidden="true"></div>
+            <div class="lamp-shade-wrap">
+                <div class="lamp-shade"></div>
+                <div class="lamp-shade-inner"></div>
+            </div>
+            <div class="lamp-pole"></div>
+            <div class="lamp-base"></div>
+            <div class="lamp-cord">
+                <span class="cord-line"></span>
+                <button type="button" class="cord-pull" id="cordPull" aria-pressed="false"
+                    aria-label="Kéo dây để bật hoặc tắt đèn">
+                    <span class="cord-knob"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="card-slot" id="cardSlot">
+            <div class="card-container" id="loginFormContainer">
+
+                <div class="left-panel">
+                    <div class="brand-header">
+                        <div class="brand-logo-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </div>
+                        <span class="brand-name">PharmaKeep</span>
+                    </div>
+
+                    <div class="graphic-area">
+                        <div class="center-card">
+                            <div class="center-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" stroke="currentColor" style="width: 36px; height: 36px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="floating-badge badge-heart">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 12h3.375a1.125 1.125 0 0 1 1.056.752l1.196 3.59a1.125 1.125 0 0 0 2.115-.13l2.15-7.525a1.125 1.125 0 0 1 2.132-.011l1.393 4.18c.16.48.61.801 1.117.801h3.375" />
+                            </svg>
+                        </div>
+                        <div class="floating-badge badge-shield">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="left-content">
+                        <h2 class="left-title">Smart Inventory,<br>Healthy Decisions</h2>
+                        <p class="left-desc">Track stock in real time, prevent shortages, and manage your pharmacy with
+                            confidence — all from one calm, intelligent dashboard.</p>
+                    </div>
+                </div>
+
+                <div class="right-panel">
+                    <div class="form-wrapper" id="formWrapper">
+
+                        <!-- ================= VIEW 1: ĐĂNG NHẬP ================= -->
+                        <div class="view-panel active" id="loginView">
+                            <div class="form-brand">
+                                <div class="form-brand-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" stroke="currentColor" style="width: 14px; height: 14px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </div>
+                                <span class="form-brand-name">PharmaKeep</span>
+                            </div>
+
+                            <h1 class="form-title">Welcome Back</h1>
+                            <p class="form-subtitle">Please enter your details to sign in</p>
+
+                            <form class="form-inner" id="loginForm" method="POST">
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <div class="input-relative">
+                                        <span class="input-icon-left">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.8" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                            </svg>
+                                        </span>
+                                        <input id="email" type="email" placeholder="you@pharmacy.com"
+                                            class="input-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Password</label>
+                                    <div class="input-relative">
+                                        <span class="input-icon-left">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.8" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                            </svg>
+                                        </span>
+                                        <input id="password" type="password" placeholder="Enter your password"
+                                            class="input-control" required>
+                                        <span class="password-toggle">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.8" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <label class="remember-me">
+                                        <input type="checkbox" name="remember" class="checkbox-control">
+                                        <span>Remember me</span>
+                                    </label>
+                                    <a href="#" class="forgot-link" id="showForgotBtn">Forgot password?</a>
+                                </div>
+
+                                <button type="submit" class="btn-submit" id="submitBtn">
+                                    <span>Sign In</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                    </svg>
+                                </button>
+                            </form>
+
+                            <p class="form-footer">
+                                Need help? <a href="#" class="footer-link">Contact System Administrator</a>
+                            </p>
+                        </div>
+
+                        <!-- ================= VIEW 2: QUÊN MẬT KHẨU ================= -->
+                        <div class="view-panel" id="forgotView">
+                            <div class="form-brand" style="margin-bottom: 24px;">
+                                <button class="back-btn" id="showLoginBtn" type="button"
+                                    aria-label="Quay lại đăng nhập">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" stroke="currentColor" style="width: 18px; height: 18px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                                    </svg>
+                                </button>
+                                <span class="form-brand-name">Back to Login</span>
+                            </div>
+
+                            <h1 class="form-title">Reset Password</h1>
+                            <p class="form-subtitle">Enter your email and we'll send you a recovery link.</p>
+
+                            <form class="form-inner" id="forgotForm" method="POST">
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <div class="input-relative">
+                                        <span class="input-icon-left">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.8" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                            </svg>
+                                        </span>
+                                        <input id="resetEmail" type="email" placeholder="you@pharmacy.com"
+                                            class="input-control" required>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-submit" style="margin-top: 24px;">
+                                    <span>Send Reset Link</span>
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script>
+        // ==== HIỆU ỨNG KÉO DÂY ĐÈN (DRAG & DROP) ====
+        (() => {
+            const scene = document.getElementById('scene');
+            const cordPull = document.getElementById('cordPull');
+            let isOn = false;
+
+            let startY = 0;
+            let currentY = 0;
+            let isDragging = false;
+
+            function toggleLamp() {
+                isOn = !isOn;
+                scene.classList.toggle('is-on', isOn);
+                cordPull.setAttribute('aria-pressed', String(isOn));
+            }
+
+            cordPull.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startY = e.clientY;
+                cordPull.style.transition = 'none';
+                document.body.style.userSelect = 'none';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaY = e.clientY - startY;
+                if (deltaY > 0 && deltaY < 60) {
+                    currentY = deltaY;
+                    cordPull.style.transform = `translateY(${deltaY}px)`;
+                }
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                document.body.style.userSelect = '';
+                cordPull.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                cordPull.style.transform = 'translateY(0)';
+                if (currentY > 30) {
+                    toggleLamp();
+                }
+                currentY = 0;
+            });
+
+            cordPull.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startY = e.touches[0].clientY;
+                cordPull.style.transition = 'none';
+            }, { passive: true });
+
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const deltaY = e.touches[0].clientY - startY;
+                if (deltaY > 0 && deltaY < 60) {
+                    currentY = deltaY;
+                    cordPull.style.transform = `translateY(${deltaY}px)`;
+                }
+            }, { passive: true });
+
+            window.addEventListener('touchend', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                cordPull.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                cordPull.style.transform = 'translateY(0)';
+                if (currentY > 30) {
+                    toggleLamp();
+                }
+                currentY = 0;
+            });
+        })();
+
+        // ==== HÀM TẠO THÔNG BÁO TOAST XỊN ====
+        function showToast(type, title, message) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            toast.className = `custom-toast toast-${type}`;
+
+            const iconSvg = type === 'success'
+                ? `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`
+                : `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>`;
+
+            const duration = 3000;
+
+            toast.innerHTML = `
+                <div class="toast-icon">${iconSvg}</div>
+                <div class="toast-content">
+                    <div class="toast-title">${title}</div>
+                    <div class="toast-message">${message}</div>
+                </div>
+                <div class="toast-progress" style="animation-duration: ${duration}ms;"></div>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('fade-out');
+                setTimeout(() => toast.remove(), 400);
+            }, duration);
+        }
+
+        // ==== CHUYỂN ĐỔI FORM ĐĂNG NHẬP / QUÊN MẬT KHẨU ====
+        const showForgotBtn = document.getElementById('showForgotBtn');
+        const showLoginBtn = document.getElementById('showLoginBtn');
+        const loginView = document.getElementById('loginView');
+        const forgotView = document.getElementById('forgotView');
+
+        if (showForgotBtn && showLoginBtn) {
+            showForgotBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginView.classList.remove('active');
+                forgotView.classList.add('active');
+            });
+
+            showLoginBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                forgotView.classList.remove('active');
+                loginView.classList.add('active');
+            });
+        }
+
+        const forgotForm = document.getElementById('forgotForm');
+        if (forgotForm) {
+            forgotForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('resetEmail').value;
+
+                showToast('success', 'Đã gửi Email', `Đường dẫn khôi phục đã được gửi tới ${email}`);
+
+                setTimeout(() => {
+                    forgotView.classList.remove('active');
+                    loginView.classList.add('active');
+                    document.getElementById('resetEmail').value = '';
+                }, 2000);
+            });
+        }
+
+        // ==== API ĐĂNG NHẬP GỐC ====
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showToast('success', 'Đăng nhập thành công', 'Chào mừng bạn quay trở lại hệ thống!');
+                    localStorage.setItem('isLoggedIn', 'true');
+
+                    setTimeout(() => {
+                        window.location.href = 'http://localhost:3000/dashboard';
+                    }, 1500);
+                } else {
+                    showToast('error', 'Đăng nhập thất bại', data.message || 'Sai thông tin đăng nhập.');
+                }
+            } catch (error) {
+                console.error('Lỗi:', error);
+                showToast('error', 'Lỗi kết nối', 'Không thể kết nối đến máy chủ. Vui lòng thử lại sau.');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaKeep - Staff & Access Control</title>
+    <link rel="stylesheet" href="staff_management.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                </div>
+                <div class="brand-info">
+                    <span class="brand-name">PharmaKeep</span>
+                    <span class="brand-sub">Pharmacy System</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <p class="menu-label">MENU</p>
+                <ul class="menu-list">
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path
+                                    d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+                            </svg>Dashboard</a></li>
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path
+                                    d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                            </svg>Medicine Catalog</a></li>
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                            </svg>Stock In/Out</a></li>
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path
+                                    d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h3.375c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m-1.5-7.75 3-1m-3 1a1.793 1.793 0 0 0-1.285 1.151l-.422 1.358m0 0-1.165 3.75M12.75 21h-.75V10.75h.75V21Z" />
+                            </svg>Suppliers</a></li>
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
+                                <path d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+                            </svg>Reports & Analytics</a></li>
+                    <li><a href="#" class="menu-item active"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path
+                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                            </svg>Staff & Roles</a></li>
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path
+                                    d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127c.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.43l-1.003.767c-.31.236-.456.63-.373 1.02a7.082 7.082 0 0 1 0 .238c-.084.39.063.784.373 1.02l1.003.767a1.125 1.125 0 0 1 .26 1.43l-1.296 2.247a1.125 1.125 0 0 1-1.37.49l-1.216-.456c-.356-.133-.751-.072-1.076.124a6.57 6.57 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.43l1.004-.767c.31-.236.456-.63.372-1.02a7.07 7.07 0 0 1 0-.238c.084-.39-.063-.784-.373-1.02l-1.003-.767a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.49l1.216.456c.356 1.33.751.072 1.076-.124.072-.044.146-.087.22-.128c.332-.183.582-.495.645-.869l.214-1.28Z" />
+                            </svg>Settings</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-user">
+                <div class="user-avatar-box"><span class="user-initials"></span></div>
+                <div class="user-info">
+                    <span class="user-name"></span>
+                    <span class="user-role"></span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="search-wrapper">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor">
+                        <path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 1 15.75 4.5a7.5 7.5 0 0 1 0 10.5Z" />
+                    </svg>
+                    <input type="text" id="search-staff" placeholder="Search staff by name, email or badge ID..."
+                        class="search-input">
+                </div>
+                <div class="header-actions">
+                    <div class="lang-selector">
+                        <span class="lang-text">EN</span>
+                        <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="2.5" stroke="currentColor">
+                            <path d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </div>
+                    <div class="small-profile-avatar"><span class="avatar-text"></span></div>
+                </div>
+            </header>
+
+            <div class="breadcrumb">
+                <a href="#">Staff & Roles</a>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                    stroke="currentColor">
+                    <path d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+            </div>
+
+            <div class="page-header">
+                <div class="header-left">
+                    <h1 class="page-title">Staff & Access Control</h1>
+                    <p class="page-subtitle">Provision system access, modify system roles, audit active profiles, or
+                        suspend pharmacy operator accounts.</p>
+                </div>
+                <a href="create_account_staff.html" class="btn-add-staff">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    Create New Staff Account
+                </a>
+            </div>
+
+            <form class="filter-card" id="filter-form">
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label>System Role Mapping</label>
+                        <select name="role" class="filter-select">
+                            <option value="">All Roles</option>
+                            <option value="admin">Pharmacist</option>
+                            <option value="pharmacist">Cashier</option>
+                            <option value="storekeeper">PharmacyManager</option>
+                            <option value="storekeeper">SystemAdministrator</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Account Status</label>
+                        <select name="status">
+                            <option value="">All Statuses</option>
+                            <option value="active">Active</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                    </div>
+                    <div class="filter-group action-align">
+                        <button type="submit" class="btn-filter-submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor">
+                                <path
+                                    d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36M12 3v6m0-6L9 6m3-3l3 3" />
+                            </svg>
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="table-section-container">
+                <div class="table-responsive-wrapper">
+                    <table class="staff-data-table">
+                        <thead>
+                            <tr>
+                                <th>Staff Member</th>
+                                <th>Employee ID</th>
+                                <th>Email Address</th>
+                                <th>Assigned Role</th>
+                                <th>Linked Warehouse Zone</th>
+                                <th>Last Active Session</th>
+                                <th>Status</th>
+                                <th style="text-align: center;">Access Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- ĐOẠN SCRIPT ĐỒNG BỘ DỮ LIỆU TỪ DB LÊN BẢNG STAFF -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableBody = document.querySelector('.staff-data-table tbody');
+            const filterForm = document.getElementById('filter-form');
+            const searchInput = document.getElementById('search-staff'); // Bắt lấy ô tìm kiếm
+
+            function capitalize(str) {
+                if (!str) return '';
+                return str.charAt(0).toUpperCase() + str.slice(1);
+            }
+
+            function getInitials(fullName) {
+                let initials = 'NV';
+                if (fullName) {
+                    const words = fullName.trim().split(/\s+/);
+                    if (words.length === 1) {
+                        initials = words[0].substring(0, 2).toUpperCase();
+                    } else {
+                        initials = (words[0][0] + words[words.length - 1][0]).toUpperCase();
+                    }
+                }
+                return initials;
+            }
+
+            // Cập nhật hàm loadStaff để nhận thêm tham số tìm kiếm (search)
+            async function loadStaff(role = '', status = '', search = '') {
+                try {
+                    let url = 'http://localhost:3000/api/staff';
+                    const params = new URLSearchParams();
+                    if (role) params.append('role', role);
+                    if (status) params.append('status', status);
+                    if (search) params.append('search', search); // Gửi từ khóa tìm kiếm lên backend
+                    if (params.toString()) url += `?${params.toString()}`;
+
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error("Lỗi fetch dữ liệu");
+
+                    const staffList = await response.json();
+                    tableBody.innerHTML = '';
+
+                    if (staffList.length === 0) {
+                        tableBody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #6b7280; padding: 20px;">Không tìm thấy nhân viên nào phù hợp.</td></tr>`;
+                        return;
+                    }
+
+                    staffList.forEach(staff => {
+                        const initials = getInitials(staff.full_name);
+
+                        let roleClass = 'role-pharmacist';
+                        if (staff.primary_role === 'admin' || staff.primary_role === 'manager') roleClass = 'role-admin';
+                        if (staff.primary_role === 'storekeeper') roleClass = 'role-storekeeper';
+
+                        const isActive = staff.account_status === 'active';
+                        const statusText = isActive ? 'Active' : 'Suspended';
+                        const pillClass = isActive ? 'pill-active' : 'pill-suspended';
+
+                        const row = `
+                            <tr data-id="${staff.id}">
+                                <td class="cell-name">
+                                    <div class="staff-meta-wrapper">
+                                        <div class="staff-avatar-circle">${initials}</div>
+                                        <div class="staff-identity-info">
+                                            <span class="full-name">${staff.full_name}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="username-cell">NV-${String(staff.id).padStart(3, '0')}</td>
+                                <td class="cell-email email-cell">${staff.email}</td>
+                                <td class="cell-role" data-value="${staff.primary_role}"><span class="role-badge ${roleClass}">${capitalize(staff.primary_role)}</span></td>
+                                <td class="cell-phone zone-cell">${staff.phone_number || ''}</td>
+                                <td class="timestamp-cell">Active Session</td>
+                                <td class="cell-status" data-value="${staff.account_status}"><span class="status-pill ${pillClass}">${statusText}</span></td>
+                                <td style="text-align: center;">
+                                    <div class="action-buttons-group">
+                                        <button class="btn-action-icon edit-btn" title="Chỉnh sửa">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125"/></svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+                        tableBody.insertAdjacentHTML('beforeend', row);
+                    });
+
+                    initEditEvents();
+
+                } catch (error) {
+                    console.error("Lỗi kết nối:", error);
+                    tableBody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #dc2626; padding: 20px; font-weight: bold;">Không thể kết nối đến máy chủ Backend!</td></tr>`;
+                }
+            }
+
+            // Hàm kích hoạt bộ lọc kết hợp tìm kiếm nhanh
+            function triggerSearchAndFilter() {
+                const roleValue = filterForm.querySelector('select[name="role"]').value;
+                const statusValue = filterForm.querySelector('select[name="status"]').value;
+                const searchValue = searchInput ? searchInput.value : '';
+                loadStaff(roleValue, statusValue, searchValue);
+            }
+
+            // Sự kiện 1: Khi gõ vào ô tìm kiếm (Tìm kiếm thời gian thực - Realtime)
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    triggerSearchAndFilter();
+                });
+            }
+
+            // Sự kiện 2: Khi bấm nút "Apply Filters"
+            filterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                triggerSearchAndFilter();
+            });
+
+            // Hàm xử lý Inline Edit (Giữ nguyên tính năng sửa trực tiếp từ bước trước)
+            function initEditEvents() {
+                const editButtons = document.querySelectorAll('.edit-btn');
+                editButtons.forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        const row = this.closest('tr');
+                        const id = row.getAttribute('data-id');
+                        const isEditing = row.classList.contains('row-editing');
+
+                        if (!isEditing) {
+                            row.classList.add('row-editing');
+                            const nameSpan = row.querySelector('.full-name');
+                            const currentName = nameSpan.textContent.trim();
+                            row.querySelector('.cell-name').innerHTML = `<input type="text" class="edit-input input-name" value="${currentName}">`;
+
+                            const emailCell = row.querySelector('.cell-email');
+                            const currentEmail = emailCell.textContent.trim();
+                            emailCell.innerHTML = `<input type="email" class="edit-input input-email" value="${currentEmail}">`;
+
+                            const roleCell = row.querySelector('.cell-role');
+                            const currentRole = roleCell.getAttribute('data-value');
+                            roleCell.innerHTML = `
+                                <select class="edit-select select-role">
+                                    <option value="admin" ${currentRole === 'admin' ? 'selected' : ''}>Admin</option>
+                                    <option value="manager" ${currentRole === 'manager' ? 'selected' : ''}>Manager</option>
+                                    <option value="pharmacist" ${currentRole === 'pharmacist' ? 'selected' : ''}>Pharmacist</option>
+                                    <option value="storekeeper" ${currentRole === 'storekeeper' ? 'selected' : ''}>Storekeeper</option>
+                                </select>
+                            `;
+
+                            const phoneCell = row.querySelector('.cell-phone');
+                            const currentPhone = phoneCell.textContent.trim();
+                            phoneCell.innerHTML = `<input type="text" class="edit-input input-phone" value="${currentPhone}">`;
+
+                            const statusCell = row.querySelector('.cell-status');
+                            const currentStatus = statusCell.getAttribute('data-value');
+                            statusCell.innerHTML = `
+                                <select class="edit-select select-status">
+                                    <option value="active" ${currentStatus === 'active' ? 'selected' : ''}>Active</option>
+                                    <option value="inactive" ${currentStatus === 'inactive' ? 'selected' : ''}>Suspended</option>
+                                </select>
+                            `;
+
+                            this.classList.add('save-btn');
+                            this.title = "Lưu lại thông tin";
+                            this.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>`;
+                        } else {
+                            const updatedData = {
+                                full_name: row.querySelector('.input-name').value.trim(),
+                                email: row.querySelector('.input-email').value.trim(),
+                                primary_role: row.querySelector('.select-role').value,
+                                phone_number: row.querySelector('.input-phone').value.trim(),
+                                account_status: row.querySelector('.select-status').value
+                            };
+
+                            if (!updatedData.full_name || !updatedData.email) {
+                                alert("Tên và Email không được để trống!");
+                                return;
+                            }
+
+                            fetch(`http://localhost:3000/api/staff/${id}`, {
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(updatedData)
+                            })
+                                .then(res => res.json().then(data => ({ status: res.status, body: data })))
+                                .then(resObj => {
+                                    if (resObj.status === 200) {
+                                        alert("Đã lưu chỉnh sửa thành công!");
+                                        triggerSearchAndFilter(); // Tải lại bảng theo từ khóa tìm kiếm hiện hành
+                                    } else {
+                                        alert("Lỗi: " + resObj.body.message);
+                                    }
+                                })
+                                .catch(err => {
+                                    console.error(err);
+                                    alert("Không thể kết nối máy chủ để lưu!");
+                                });
+                        }
+                    });
+                });
+            }
+
+            loadStaff();
+        });
+    </script>
+</body>
+
+</body>
+
+</html>

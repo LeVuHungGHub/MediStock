@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaKeep - Supplier Directory</title>
+    <link rel="stylesheet" href="supplier_management.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                </div>
+                <div class="brand-info">
+                    <span class="brand-name">PharmaKeep</span>
+                    <span class="brand-sub">Pharmacy System</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <p class="menu-label">MENU</p>
+                <ul class="menu-list">
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path
+                                    d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+                            </svg>Dashboard</a></li>
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path
+                                    d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                            </svg>Medicine Catalog</a></li>
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                            </svg>Stock In/Out</a></li>
+                    <li><a href="#" class="menu-item active"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path
+                                    d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h3.375c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m-1.5-7.75 3-1m-3 1a1.793 1.793 0 0 0-1.285 1.151l-.422 1.358m0 0-1.165 3.75M12.75 21h-.75V10.75h.75V21Z" />
+                            </svg>Suppliers</a></li>
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
+                                <path d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+                            </svg>Reports & Analytics</a></li>
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path
+                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                            </svg>Staff & Roles</a></li>
+                    <li><a href="#" class="menu-item"><svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path
+                                    d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127c.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.43l-1.003.767c-.31.236-.456.63-.373 1.02a7.082 7.082 0 0 1 0 .238c-.084.39.063.784.373 1.02l1.003.767a1.125 1.125 0 0 1 .26 1.43l-1.296 2.247a1.125 1.125 0 0 1-1.37.49l-1.216-.456c-.356-.133-.751-.072-1.076.124a6.57 6.57 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.43l1.004-.767c.31-.236.456-.63.372-1.02a7.07 7.07 0 0 1 0-.238c.084-.39-.063-.784-.373-1.02l-1.003-.767a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.49l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128c.332-.183.582-.495.645-.869l.214-1.28Z" />
+                            </svg>Settings</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-user">
+                <div class="user-avatar-box"><span class="user-initials"></span></div>
+                <div class="user-info">
+                    <span class="user-name"></span>
+                    <span class="user-role"></span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="top-header">
+                <div class="search-wrapper">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor">
+                        <path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 1 15.75 4.5a7.5 7.5 0 0 1 0 10.5Z" />
+                    </svg>
+                    <input type="text" placeholder="Search suppliers by name, VAT, email..." class="search-input">
+                </div>
+                <div class="header-actions">
+                    <div class="lang-selector">
+                        <span class="lang-text">EN</span>
+                        <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="2.5" stroke="currentColor">
+                            <path d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </div>
+                    <div class="small-profile-avatar"><span class="avatar-text"></span></div>
+                </div>
+            </header>
+
+            <div class="breadcrumb">
+                <a href="#">Dashboard</a>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                    stroke="currentColor">
+                    <path d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                <span>Supplier Directory</span>
+            </div>
+
+            <div class="page-header">
+                <div class="header-left">
+                    <h1 class="page-title">Supplier Directory</h1>
+                    <p class="page-subtitle">Manage pharmaceutical companies, contract records, procurement history, and
+                        outstanding balances.</p>
+                </div>
+                <a href="#" class="btn-create-supplier">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    Add New Supplier
+                </a>
+            </div>
+
+            <form id="filter-form" action="" method="GET" class="filter-card">
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label>Partnership Status</label>
+                        <select name="status">
+                            <option value="">All Statuses</option>
+                            <option value="active">Active Partner</option>
+                            <option value="on_hold">On Hold / Review</option>
+                            <option value="terminated">Terminated</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Financial Balance Status</label>
+                        <select name="balance_filter">
+                            <option value="">All Suppliers</option>
+                            <option value="has_debt">Outstanding Debt Owed</option>
+                            <option value="clear">Clear / No Balance</option>
+                        </select>
+                    </div>
+                    <div class="filter-group action-align">
+                        <button type="submit" class="btn-filter-submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor">
+                                <path
+                                    d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36M12 3v6m0-6L9 6m3-3l3 3" />
+                            </svg>
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="table-section-container">
+                <div class="table-responsive-wrapper">
+                    <table class="suppliers-data-table">
+                        <thead>
+                            <tr>
+                                <th>Supplier Code</th>
+                                <th>Company Name</th>
+                                <th>VAT / Tax ID</th>
+                                <th>Contact Email</th>
+                                <th>Phone Number</th>
+                                <th>Total Orders</th>
+                                <th>Outstanding Balance</th>
+                                <th>Status</th>
+                                <th style="text-align: center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="code-cell"></td>
+                                <td class="name-cell">
+                                    <div class="supplier-info-wrapper">
+                                        <span class="company-name"></span>
+                                        <span class="company-address"></span>
+                                    </div>
+                                </td>
+                                <td class="vat-cell"></td>
+                                <td class="email-cell"></td>
+                                <td class="phone-cell"></td>
+                                <td class="orders-cell">POs</td>
+                                <td class="balance-cell"><span class="balance-amount">$</span>
+                                </td>
+                                <td>
+                                    <span class="status-pill status-active">Active</span>
+
+                                </td>
+                                <td style="text-align: center;">
+                                    <div class="action-buttons-group">
+                                        <a href="/suppliers/details/" class="btn-action-icon view-btn"
+                                            title="View Profile & Ledger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="2" stroke="currentColor">
+                                                <path
+                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
+                                        </a>
+                                        <a href="/suppliers/edit/" class="btn-action-icon edit-btn" title="Edit Info">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="2" stroke="currentColor">
+                                                <path
+                                                    d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <!-- ========================================== -->
+    <!-- MODAL POPUP: ADD NEW SUPPLIER (GIỐNG STAFF) -->
+    <!-- ========================================== -->
+    <div id="add-supplier-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 class="modal-title">Add New Supplier</h2>
+                <button type="button" id="btn-close-modal" class="btn-close-x">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <form id="add-supplier-form" class="modal-form-body">
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="required-label">Company Name</label>
+                        <input type="text" name="company_name" placeholder="e.g. Novartis Vietnam" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required-label">VAT / Tax ID</label>
+                        <input type="text" name="vat_tax_id" placeholder="e.g. 0102345678" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="required-label">Full Address</label>
+                    <input type="text" name="company_address" placeholder="e.g. 123 Nguyen Luong Bang, District 7, HCMC"
+                        required>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="required-label">Contact Email</label>
+                        <input type="email" name="contact_email" placeholder="e.g. info@novartis.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required-label">Phone Number</label>
+                        <input type="text" name="phone_number" placeholder="e.g. 0283999888" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label>Partnership Status</label>
+                        <select name="status">
+                            <option value="active">Active Partner</option>
+                            <option value="on_hold">On Hold / Review</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Initial Balance Owed ($)</label>
+                        <input type="number" name="outstanding_balance" value="0" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div class="modal-footer-actions">
+                    <button type="button" id="btn-cancel-modal" class="btn-modal-secondary">Cancel</button>
+                    <button type="submit" class="btn-modal-primary">Save Supplier</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableBody = document.querySelector('.suppliers-data-table tbody');
+            const filterForm = document.getElementById('filter-form');
+            const searchInput = document.querySelector('.search-wrapper .search-input');
+
+            const addSupplierBtn = document.querySelector('.btn-create-supplier');
+            const supplierModal = document.getElementById('add-supplier-modal');
+            const closeXBtn = document.getElementById('btn-close-modal');
+            const cancelBtn = document.getElementById('btn-cancel-modal');
+            const addSupplierForm = document.getElementById('add-supplier-form');
+
+            // --- 1. HÀM TẢI VÀ VẼ BẢNG DANH SÁCH ---
+            window.loadSuppliers = async function (status = '', balance_filter = '', search = '') {
+                try {
+                    let url = 'http://localhost:3000/api/suppliers';
+                    const params = new URLSearchParams();
+                    if (status) params.append('status', status);
+                    if (balance_filter) params.append('balance_filter', balance_filter);
+                    if (search) params.append('search', search);
+                    if (params.toString()) url += `?${params.toString()}`;
+
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error("Lỗi fetch dữ liệu");
+
+                    const suppliers = await response.json();
+                    tableBody.innerHTML = '';
+
+                    if (suppliers.length === 0) {
+                        tableBody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: #6b7280; padding: 20px;">Không tìm thấy nhà cung cấp nào phù hợp.</td></tr>`;
+                        return;
+                    }
+
+                    suppliers.forEach(sup => {
+                        const supplierCode = `SUP-${String(sup.id).padStart(3, '0')}`;
+                        let statusText = 'Active Partner';
+                        let badgeClass = 'status-active';
+                        if (sup.partnership_status === 'on_hold') {
+                            statusText = 'On Hold / Review';
+                            badgeClass = 'status-hold';
+                        } else if (sup.partnership_status === 'terminated') {
+                            statusText = 'Terminated';
+                            badgeClass = 'status-hold';
+                        }
+
+                        const formattedBalance = parseFloat(sup.outstanding_balance || 0).toLocaleString('en-US', {
+                            minimumFractionDigits: 2, maximumFractionDigits: 2
+                        });
+
+                        // HTML cho mỗi dòng, gắn thêm id để JS dễ dàng tìm và thay thế bằng thẻ input
+                        const row = `
+                    <tr id="row-${sup.id}">
+                        <td class="code-cell">${supplierCode}</td>
+                        <td class="name-cell">
+                            <div class="supplier-info-wrapper">
+                                <span class="company-name" id="name-${sup.id}">${sup.company_name}</span>
+                                <span class="company-address" id="addr-${sup.id}" title="${sup.company_address}">${sup.company_address}</span>
+                            </div>
+                        </td>
+                        <td class="vat-cell" id="vat-${sup.id}">${sup.vat_tax_id}</td>
+                        <td class="email-cell" id="email-${sup.id}">${sup.contact_email}</td>
+                        <td class="phone-cell" id="phone-${sup.id}">${sup.phone_number}</td>
+                        <td class="orders-cell">${sup.total_orders || 0} POs</td>
+                        <td class="balance-cell">$<span class="balance-amount" id="balance-${sup.id}" data-raw="${sup.outstanding_balance || 0}">${formattedBalance}</span></td>
+                        <td id="status-td-${sup.id}">
+                            <span class="status-pill ${badgeClass}" data-status="${sup.partnership_status}">${statusText}</span>
+                        </td>
+                        <td style="text-align: center;">
+                            <div class="action-buttons-group" id="actions-${sup.id}">
+                                <button class="btn-action-icon edit-btn" title="Edit Info" onclick="enterEditMode(${sup.id})">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                                    </svg>
+                                </button>
+                                <button class="btn-action-icon delete-btn" title="Delete Supplier" onclick="deleteSupplier(${sup.id})">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                        tableBody.insertAdjacentHTML('beforeend', row);
+                    });
+
+                } catch (error) {
+                    console.error("Lỗi kết nối:", error);
+                }
+            };
+
+            // --- CÁC HÀM XỬ LÝ CHỈNH SỬA TRỰC TIẾP (INLINE EDIT) ---
+            window.enterEditMode = function (id) {
+                // Lấy các thẻ HTML hiện tại
+                const nameEl = document.getElementById(`name-${id}`);
+                const addrEl = document.getElementById(`addr-${id}`);
+                const vatEl = document.getElementById(`vat-${id}`);
+                const emailEl = document.getElementById(`email-${id}`);
+                const phoneEl = document.getElementById(`phone-${id}`);
+                const balanceEl = document.getElementById(`balance-${id}`);
+                const statusTd = document.getElementById(`status-td-${id}`);
+                const actionsEl = document.getElementById(`actions-${id}`);
+
+                // Lấy dữ liệu dạng text để đổ vào ô input
+                const currentName = nameEl.innerText;
+                const currentAddr = addrEl.innerText;
+                const currentVat = vatEl.innerText;
+                const currentEmail = emailEl.innerText;
+                const currentPhone = phoneEl.innerText;
+                const currentBalance = balanceEl.getAttribute('data-raw'); // Lấy số thực chưa format
+                const currentStatus = statusTd.querySelector('span').getAttribute('data-status');
+
+                // Biến các thẻ thành ô input
+                nameEl.innerHTML = `<input type="text" id="input-name-${id}" value="${currentName}" class="inline-input" style="font-weight: 700;">`;
+                addrEl.innerHTML = `<input type="text" id="input-addr-${id}" value="${currentAddr}" class="inline-input">`;
+                vatEl.innerHTML = `<input type="text" id="input-vat-${id}" value="${currentVat}" class="inline-input">`;
+                emailEl.innerHTML = `<input type="email" id="input-email-${id}" value="${currentEmail}" class="inline-input">`;
+                phoneEl.innerHTML = `<input type="text" id="input-phone-${id}" value="${currentPhone}" class="inline-input">`;
+                balanceEl.innerHTML = `<input type="number" id="input-balance-${id}" value="${currentBalance}" step="0.01" class="inline-input" style="width: 100px;">`;
+
+                statusTd.innerHTML = `
+            <select id="input-status-${id}" class="inline-input">
+                <option value="active" ${currentStatus === 'active' ? 'selected' : ''}>Active</option>
+                <option value="on_hold" ${currentStatus === 'on_hold' ? 'selected' : ''}>On Hold</option>
+                <option value="terminated" ${currentStatus === 'terminated' ? 'selected' : ''}>Terminated</option>
+            </select>
+        `;
+
+                // Đổi nút Sửa/Xóa thành Lưu/Hủy
+                actionsEl.innerHTML = `
+            <button class="btn-action-icon save-btn" title="Save Changes" onclick="saveSupplier(${id})">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+            </button>
+            <button class="btn-action-icon cancel-btn" title="Cancel" onclick="reloadTable()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+            </button>
+        `;
+            };
+
+            // Hàm gọi API Lưu
+            window.saveSupplier = async function (id) {
+                const updateData = {
+                    company_name: document.getElementById(`input-name-${id}`).value,
+                    company_address: document.getElementById(`input-addr-${id}`).value,
+                    vat_tax_id: document.getElementById(`input-vat-${id}`).value,
+                    contact_email: document.getElementById(`input-email-${id}`).value,
+                    phone_number: document.getElementById(`input-phone-${id}`).value,
+                    outstanding_balance: document.getElementById(`input-balance-${id}`).value,
+                    partnership_status: document.getElementById(`input-status-${id}`).value
+                };
+
+                try {
+                    const response = await fetch(`http://localhost:3000/api/suppliers/${id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(updateData)
+                    });
+
+                    if (response.ok) {
+                        alert('Đã cập nhật thành công!');
+                        reloadTable();
+                    } else {
+                        alert('Có lỗi xảy ra khi cập nhật.');
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+
+            // Hàm gọi API Xóa
+            window.deleteSupplier = async function (id) {
+                const isConfirm = confirm("Bạn có chắc chắn muốn xóa toàn bộ thông tin nhà cung cấp này? Hành động này không thể hoàn tác.");
+                if (!isConfirm) return;
+
+                try {
+                    const response = await fetch(`http://localhost:3000/api/suppliers/${id}`, { method: 'DELETE' });
+                    if (response.ok) {
+                        alert('Đã xóa thành công!');
+                        reloadTable();
+                    } else {
+                        alert('Lỗi hệ thống khi xóa.');
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+
+            // Hàm tiện ích để load lại bảng giữ nguyên filter
+            window.reloadTable = function () {
+                const statusVal = filterForm?.querySelector('select[name="status"]')?.value || '';
+                const balanceVal = filterForm?.querySelector('select[name="balance_filter"]')?.value || '';
+                const searchVal = searchInput?.value || '';
+                loadSuppliers(statusVal, balanceVal, searchVal);
+            };
+
+            // --- CÁC SỰ KIỆN KHÁC (Form thêm, tìm kiếm, lọc...) GIỮ NGUYÊN ---
+            if (addSupplierBtn) {
+                addSupplierBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    supplierModal.style.display = 'flex';
+                });
+            }
+
+            function closeModal() {
+                supplierModal.style.display = 'none';
+                addSupplierForm.reset();
+            }
+
+            if (closeXBtn) closeXBtn.addEventListener('click', closeModal);
+            if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+            window.addEventListener('click', (e) => { if (e.target === supplierModal) closeModal(); });
+
+            addSupplierForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(addSupplierForm);
+                const supplierData = Object.fromEntries(formData.entries());
+
+                try {
+                    const response = await fetch('http://localhost:3000/api/suppliers', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(supplierData)
+                    });
+
+                    if (response.ok) {
+                        alert("Đã thêm nhà cung cấp thành công!");
+                        closeModal();
+                        reloadTable(); // Tự động load lại
+                    } else {
+                        alert("Lỗi: Không thể lưu thông tin.");
+                    }
+                } catch (error) {
+                    console.error("Lỗi POST API:", error);
+                }
+            });
+
+            if (filterForm) {
+                filterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    reloadTable();
+                });
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    reloadTable();
+                });
+            }
+
+            // Chạy mặc định khi mở trang
+            loadSuppliers();
+        });
+    </script>
+</body>
+
+</html>

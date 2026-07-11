@@ -1,0 +1,925 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: transparent !important;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+.card-container {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
+    min-height: 640px;
+    overflow: hidden;
+}
+
+/* LEFT PANEL STYLES */
+.left-panel {
+    width: 42%;
+    background: linear-gradient(135deg, #e8f7f4 0%, #ffffff 50%, #fdf0f2 100%);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    user-select: none;
+    animation: loginFadeUp 0.4s cubic-bezier(0.215, 0.610, 0.355, 1) both;
+}
+
+.brand-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-logo-box {
+    width: 28px;
+    height: 28px;
+    background-color: #0ea89b;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(14, 168, 155, 0.4);
+}
+
+.brand-logo-box svg {
+    width: 16px;
+    height: 16px;
+}
+
+.brand-name {
+    font-weight: 700;
+    color: #111827;
+    font-size: 15px;
+}
+
+.graphic-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0;
+}
+
+.center-card {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    padding: 28px;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(249, 250, 251, 0.5);
+    position: relative;
+    z-index: 10;
+    animation: floatIcon 2.2s ease-in-out infinite;
+}
+
+.center-icon-box {
+    width: 72px;
+    height: 72px;
+    background-color: #0ea89b;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 10px 15px -3px rgba(14, 168, 155, 0.3);
+}
+
+.floating-badge {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    z-index: 20;
+    border: 1px solid #f9fafb;
+    color: #0ea89b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-heart {
+    top: -10px;
+    right: 50px;
+    animation: floatBadgeOpposite 2.5s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+.badge-shield {
+    bottom: -10px;
+    left: 50px;
+    animation: floatIcon 2s ease-in-out infinite;
+    animation-delay: 0.4s;
+}
+
+.floating-badge svg {
+    width: 18px;
+    height: 18px;
+}
+
+.left-title {
+    font-size: 23px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.left-desc {
+    font-size: 12.5px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+/* RIGHT PANEL - LOGIN SPECIFIC */
+.right-panel {
+    width: 58%;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+/* ĐÃ CẬP NHẬT FORM-WRAPPER */
+.form-wrapper {
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    min-height: 460px;
+    overflow: hidden;
+    animation: loginFadeUp 0.4s cubic-bezier(0.215, 0.610, 0.355, 1) both;
+    animation-delay: 0.08s;
+}
+
+/* ==========================================================================
+   HIỆU ỨNG CHUYỂN TRANG MƯỢT MÀ (SLIDE & FADE TRANSITION) - THÊM MỚI
+   ========================================================================== */
+.view-panel {
+    width: 100%;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.view-panel:not(.active) {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(40px);
+    pointer-events: none;
+}
+
+.view-panel.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    transform: translateX(0);
+}
+
+#forgotView:not(.active) {
+    transform: translateX(-40px);
+}
+
+.back-btn {
+    background: #f3f4f6;
+    border: none;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #4b5563;
+    transition: all 0.2s ease;
+    margin-right: 12px;
+}
+
+.back-btn:hover {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+/* TIẾP TỤC CSS GỐC */
+.form-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.form-brand-box {
+    width: 24px;
+    height: 24px;
+    background-color: #0ea89b;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.form-brand-name {
+    font-weight: 700;
+    color: #111827;
+    font-size: 14px;
+}
+
+.form-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.02em;
+}
+
+.form-subtitle {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 4px;
+    margin-bottom: 32px;
+}
+
+.form-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.input-relative {
+    position: relative;
+}
+
+.input-icon-left {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+.input-icon-left svg,
+.password-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+.input-control {
+    width: 100%;
+    padding: 11px 16px 11px 40px;
+    font-size: 13.5px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    color: #111827;
+    transition: all 0.15s ease-out !important;
+}
+
+.input-control:focus {
+    outline: none;
+    border-color: #0ea89b;
+    box-shadow: 0 0 0 1px #0ea89b;
+}
+
+.input-relative:focus-within .input-icon-left svg {
+    color: #10b981 !important;
+    transform: translateY(-2px) scale(1.08);
+    transition: all 0.15s ease-out;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 14px;
+    color: #9ca3af;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    padding-top: 4px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #374151;
+}
+
+.checkbox-control {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    accent-color: #0ea89b;
+}
+
+.forgot-link {
+    color: #0ea89b;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #0ea89b;
+    color: #ffffff;
+    padding: 11px 16px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: all 0.15s ease-out !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit:hover {
+    background-color: #0c968a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.btn-submit:hover svg {
+    transform: translateX(4px);
+    transition: transform 0.15s ease-out;
+}
+
+.btn-submit:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(16, 185, 129, 0.2);
+}
+
+.btn-submit svg {
+    width: 16px;
+    height: 16px;
+}
+
+.form-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 48px;
+}
+
+.footer-link {
+    font-weight: 600;
+    color: #374151;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .card-container {
+        flex-direction: column;
+        max-width: 450px;
+    }
+
+    .left-panel {
+        width: 100%;
+        gap: 40px;
+    }
+
+    .right-panel {
+        width: 100%;
+        padding: 40px 20px;
+    }
+}
+
+/* ==========================================================================
+   HIỆU ỨNG ANIMATION KEYFRAMES
+   ========================================================================== */
+@keyframes loginFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes floatIcon {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-6px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+@keyframes floatBadgeOpposite {
+    0% {
+        transform: translateY(0px) scale(1);
+    }
+
+    50% {
+        transform: translateY(5px) scale(1.03);
+    }
+
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}
+
+/* ==========================================================================
+   HIỆU ỨNG "ĐÈN KÉO DÂY" MỞ FORM ĐĂNG NHẬP
+   ========================================================================== */
+.scene {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 20px;
+    transition: gap 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.scene.is-on {
+    gap: 56px;
+}
+
+.lamp-rig {
+    position: relative;
+    flex: 0 0 auto;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+}
+
+.lamp-glow {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    width: 280px;
+    height: 280px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(14, 168, 155, 0.55) 0%, rgba(14, 168, 155, 0.18) 45%, rgba(14, 168, 155, 0) 72%);
+    opacity: 0;
+    filter: blur(2px);
+    pointer-events: none;
+    transition: all 0.6s ease;
+}
+
+.lamp-rig.lit .lamp-glow {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.3);
+}
+
+.lamp-shade-wrap {
+    position: relative;
+    width: 150px;
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.lamp-shade {
+    width: 150px;
+    height: 80px;
+    background: #cdd6d4;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    transition: background 0.6s ease, box-shadow 0.6s ease;
+}
+
+.lamp-rig.lit .lamp-shade {
+    background: #0ea89b;
+    box-shadow: 0 0 50px rgba(14, 168, 155, 0.9),
+        0 12px 30px rgba(14, 168, 155, 0.6),
+        0 0 100px rgba(14, 168, 155, 0.4);
+}
+
+.lamp-shade-inner {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    width: 70px;
+    height: 14px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: #eafaf8;
+    opacity: 0;
+    filter: blur(1px);
+    transition: opacity 0.6s ease, box-shadow 0.6s ease;
+}
+
+.lamp-rig.lit .lamp-shade-inner {
+    opacity: 0.95;
+    box-shadow: 0 0 22px 8px rgba(14, 168, 155, 0.55);
+}
+
+.lamp-pole {
+    width: 10px;
+    height: 130px;
+    margin-top: -4px;
+    border-radius: 6px;
+    background: linear-gradient(#e5e7eb, #cbd2d9);
+    transition: background 0.6s ease;
+}
+
+.lamp-rig.lit .lamp-pole {
+    background: linear-gradient(#5eead4, #0ea89b);
+}
+
+.lamp-base {
+    width: 90px;
+    height: 16px;
+    margin-top: -4px;
+    border-radius: 50%;
+    background: #d1d5db;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background 0.6s ease;
+}
+
+.lamp-rig.lit .lamp-base {
+    background: #0c968a;
+}
+
+.lamp-cord {
+    position: absolute;
+    top: 66px;
+    left: 50%;
+    transform: translateX(26px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cord-line {
+    width: 2px;
+    height: 74px;
+    background: #9ca3af;
+    transition: background 0.6s ease;
+}
+
+.lamp-rig.lit .cord-line {
+    background: #0ea89b;
+}
+
+.cord-pull {
+    width: 22px;
+    height: 22px;
+    margin-top: -2px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid #9ca3af;
+    background: #ffffff;
+    cursor: grab;
+    transition: transform 0.15s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+.cord-pull:active {
+    cursor: grabbing;
+}
+
+.cord-pull:hover {
+    transform: scale(1.08);
+}
+
+.cord-pull:focus-visible {
+    outline: 3px solid #0ea89b;
+    outline-offset: 3px;
+}
+
+.lamp-rig.lit .cord-pull {
+    border-color: #0ea89b;
+    background: #e6fbf8;
+}
+
+.cord-pull.tug {
+    animation: none;
+}
+
+.card-slot {
+    width: 0;
+    max-width: 100%;
+    opacity: 0;
+    overflow: hidden;
+    transition: width 0.9s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.5s ease 0.25s;
+}
+
+.scene.is-on .card-slot {
+    width: min(1000px, 90vw);
+    opacity: 1;
+}
+
+.card-slot .card-container {
+    opacity: 0;
+    transform: translateX(24px);
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+}
+
+.scene.is-on .card-slot .card-container {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 900px) {
+    .scene {
+        flex-direction: column;
+    }
+
+    .scene.is-on {
+        gap: 24px;
+    }
+
+    .lamp-rig {
+        transform: scale(0.85);
+    }
+
+    .card-slot {
+        width: 100%;
+        max-width: 450px;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.9s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.5s ease 0.25s;
+    }
+
+    .scene.is-on .card-slot {
+        max-height: 900px;
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+/* ==========================================================================
+   NỀN SỐNG ĐỘNG: ANIMATED GRADIENT & BỤI SÁNG LẤP LÁNH
+   ========================================================================== */
+.ambient-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #091c2b, #113854, #0b585c, #0d7a71);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.ambient-background::before,
+.ambient-background::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.15) 1.5px, transparent 2px),
+        radial-gradient(circle at 85% 30%, rgba(14, 168, 155, 0.3) 2px, transparent 3px),
+        radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 2px),
+        radial-gradient(circle at 20% 20%, rgba(14, 168, 155, 0.2) 2.5px, transparent 3px);
+    background-size: 120px 120px;
+    animation: floatDust 25s linear infinite;
+}
+
+.ambient-background::after {
+    background-size: 90px 90px;
+    animation-duration: 40s;
+    animation-direction: reverse;
+    opacity: 0.6;
+    background-image:
+        radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.15) 1px, transparent 2px),
+        radial-gradient(circle at 70% 20%, rgba(14, 168, 155, 0.25) 1.5px, transparent 2px);
+}
+
+@keyframes floatDust {
+    from {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(-150px) translateX(-80px) rotate(5deg);
+    }
+}
+
+.ambient-background .orb {
+    display: none;
+}
+
+/* ==========================================================================
+   CUSTOM TOAST NOTIFICATION (THÔNG BÁO GÓC MÀN HÌNH)
+   ========================================================================== */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none;
+}
+
+.custom-toast {
+    position: relative;
+    background: #ffffff;
+    color: #111827;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    min-width: 320px;
+    max-width: 400px;
+    overflow: hidden;
+    pointer-events: auto;
+    transform: translateX(120%);
+    animation: slideInToast 0.5s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+    border-left: 5px solid #0ea89b;
+}
+
+.custom-toast.toast-error {
+    border-left-color: #ef4444;
+}
+
+.toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.toast-success .toast-icon {
+    color: #0ea89b;
+}
+
+.toast-error .toast-icon {
+    color: #ef4444;
+}
+
+.toast-content {
+    flex-grow: 1;
+}
+
+.toast-title {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: #111827;
+}
+
+.toast-message {
+    font-size: 13.5px;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: #0ea89b;
+    width: 100%;
+    animation: progressShrink linear forwards;
+}
+
+.toast-error .toast-progress {
+    background: #ef4444;
+}
+
+.custom-toast.fade-out {
+    animation: fadeOutToast 0.4s ease-in forwards;
+}
+
+@keyframes slideInToast {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutToast {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+}
+
+@keyframes progressShrink {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}

@@ -1,0 +1,547 @@
+/* ÉP BẮT BUỘC TRÌNH DUYỆT LOAD FONT CHUẨN TRÊN CÙNG TRÁNH LỖI FONT */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: #111827;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* --- SIDEBAR STANDARDIZED --- */
+.sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #f3f4f6;
+    margin-bottom: 24px;
+}
+
+.brand-logo-box {
+    width: 36px;
+    height: 36px;
+    background-color: #0ea89b;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.brand-logo-box svg {
+    width: 20px;
+    height: 20px;
+}
+
+.brand-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #111827;
+    line-height: 1.2;
+}
+
+.brand-sub {
+    font-size: 11px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.sidebar-menu {
+    flex: 1;
+}
+
+.menu-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    padding-left: 12px;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.menu-item.active {
+    background-color: #e8f7f4;
+    color: #0ea89b;
+}
+
+.menu-icon {
+    width: 18px;
+    height: 18px;
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+.menu-item.active .menu-icon {
+    color: #0ea89b;
+}
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid #f3f4f6;
+    margin-top: auto;
+}
+
+.user-avatar-box {
+    width: 36px;
+    height: 36px;
+    background-color: #ccfbf1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #0ea89b;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.user-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.user-role {
+    font-size: 11px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* --- MAIN CONTENT LAYOUT --- */
+.main-content {
+    margin-left: 260px;
+    flex: 1;
+    padding: 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* TOP HEADER */
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    max-width: 440px;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 13.5px;
+    font-family: inherit;
+}
+
+.search-icon {
+    width: 18px;
+    height: 18px;
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+.dropdown-icon {
+    width: 14px;
+    height: 14px;
+    color: #4b5563;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.lang-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.small-profile-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #4b5563;
+}
+
+/* BREADCRUMB & TITLES */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #6b7280;
+}
+
+.breadcrumb svg {
+    width: 12px;
+    height: 12px;
+}
+
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+    min-height: 32px;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    min-height: 20px;
+}
+
+.btn-back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-back:hover {
+    background: #f9fafb;
+}
+
+.btn-back svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* --- SUMMARY GRID CARDS --- */
+.details-grid-summary {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+}
+
+.summary-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.summary-card.highlight {
+    background: linear-gradient(135deg, #0ea89b 0%, #0a867c 100%);
+    color: #ffffff;
+    border: none;
+}
+
+.card-meta-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    color: #6b7280;
+}
+
+.summary-card.highlight .card-meta-label {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.meta-item-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #f3f4f6;
+    font-size: 14px;
+}
+
+.meta-item-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.meta-label {
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.meta-value {
+    color: #111827;
+    font-weight: 600;
+    min-width: 50px;
+    text-align: right;
+}
+
+.big-stock-number {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    min-height: 40px;
+}
+
+.stock-unit-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* --- BATCHES & SHELF LOCATION SECTION --- */
+.batches-section-container {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.01);
+}
+
+.section-header-box {
+    margin-bottom: 24px;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 20px;
+}
+
+.header-title-flex {
+    display: flex;
+    align-items: start;
+    gap: 14px;
+}
+
+.icon-indicator {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-indicator.green {
+    background: #ecfdf5;
+    color: #10b981;
+}
+
+.icon-indicator svg {
+    width: 20px;
+    height: 20px;
+}
+
+.header-title-flex h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.header-title-flex p {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+/* BẢNG CHỐNG BỊ LỖI FORM VÀ TỰ ĐỘNG CÂN BẰNG LAYOUT TEXT */
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #f3f4f6;
+    border-radius: 12px;
+}
+
+.batch-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+    background: #ffffff;
+}
+
+.batch-data-table th {
+    background: #f9fafb;
+    color: #4b5563;
+    font-weight: 700;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 13px;
+}
+
+.batch-data-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.batch-data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.font-semibold {
+    font-weight: 600;
+    color: #111827;
+}
+
+.expiry-date-cell {
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+}
+
+.qty-cell {
+    font-weight: 600;
+    color: #111827;
+    font-variant-numeric: tabular-nums;
+}
+
+/* VỊ TRÍ KỆ (SHELF POSITION BADGE) */
+.location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.location-badge svg {
+    width: 14px;
+    height: 14px;
+    color: #6b7280;
+}
+
+/* TRẠNG THÁI STATUS PILLS */
+.status-pill {
+    display: inline-flex;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.status-safe {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.status-danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+}

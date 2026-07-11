@@ -1,0 +1,710 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8fafc;
+    color: #111827;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* ================= COMPONENT 1: SIDEBAR (Tương tự Dashboard) ================= */
+.sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #f3f4f6;
+    margin-bottom: 24px;
+}
+
+.brand-logo-box {
+    width: 36px;
+    height: 36px;
+    background-color: #0ea89b;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.brand-logo-box svg {
+    width: 20px;
+    height: 20px;
+}
+
+.brand-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #111827;
+}
+
+.brand-sub {
+    font-size: 11px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.sidebar-menu {
+    flex: 1;
+}
+
+.menu-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    padding-left: 12px;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.menu-item:hover {
+    background-color: #f9fafb;
+    color: #111827;
+}
+
+.menu-icon {
+    width: 18px;
+    height: 18px;
+    color: #9ca3af;
+}
+
+/* Nút Active hiện tại (Màu xanh) */
+.menu-item.active {
+    background-color: #e8f7f4;
+    color: #0ea89b;
+}
+
+.menu-item.active .menu-icon {
+    color: #0ea89b;
+}
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.user-avatar-box {
+    width: 36px;
+    height: 36px;
+    background-color: #ccfbf1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-initials {
+    color: #0ea89b;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.user-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.user-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 16px;
+}
+
+.user-role {
+    font-size: 11px;
+    color: #6b7280;
+    font-weight: 500;
+    min-height: 14px;
+}
+
+.btn-logout {
+    color: #9ca3af;
+    transition: color 0.2s;
+}
+
+.btn-logout:hover {
+    color: #ef4444;
+}
+
+.btn-logout svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ================= COMPONENT 2: MAIN CONTENT & HEADER ================= */
+.main-content {
+    margin-left: 260px;
+    flex: 1;
+    padding: 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 14px 24px;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    max-width: 440px;
+}
+
+.search-icon {
+    width: 18px;
+    height: 18px;
+    color: #9ca3af;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 13.5px;
+    color: #111827;
+}
+
+.search-input::placeholder {
+    color: #9ca3af;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.dropdown-icon {
+    width: 14px;
+    height: 14px;
+    color: #4b5563;
+}
+
+.notification-box {
+    position: relative;
+    cursor: pointer;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background-color: #ef4444;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 700;
+    min-width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+    border: 2px solid #ffffff;
+}
+
+.notification-badge:empty {
+    display: none;
+}
+
+.small-profile-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #475569;
+}
+
+/* PAGE TITLE & BUTTON */
+.page-title-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.title-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+    font-size: 13.5px;
+    color: #6b7280;
+}
+
+.btn-primary {
+    background-color: #0ea89b;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #0c968a;
+}
+
+.btn-primary svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ================= COMPONENT 3: TABLE & FILTER SECTION ================= */
+.inventory-section {
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+/* Filter Bar */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    gap: 16px;
+}
+
+.local-search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 8px 14px;
+    flex: 1;
+    max-width: 480px;
+}
+
+.local-search-box svg {
+    width: 18px;
+    height: 18px;
+    color: #9ca3af;
+}
+
+.local-search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 13.5px;
+    color: #111827;
+}
+
+.local-search-box input::placeholder {
+    color: #9ca3af;
+}
+
+.filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.select-wrapper select {
+    appearance: none;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 9px 32px 9px 14px;
+    font-size: 13.5px;
+    color: #4b5563;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m19.5 8.25-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 14px;
+}
+
+.btn-outline {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 13.5px;
+    color: #374151;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.btn-outline svg {
+    width: 16px;
+    height: 16px;
+    color: #6b7280;
+}
+
+/* Table */
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    min-height: 400px;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.inventory-table th {
+    padding: 16px 24px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.inventory-table td {
+    padding: 18px 24px;
+    font-size: 13.5px;
+    color: #4b5563;
+    border-bottom: 1px solid #f3f4f6;
+    vertical-align: middle;
+}
+
+/* Định dạng các ô dữ liệu khi có data từ backend */
+.sku-badge {
+    display: inline-flex;
+    flex-direction: column;
+    background-color: #ecfdf5;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.sku-prefix {
+    font-size: 10px;
+    font-weight: 700;
+    color: #10b981;
+    letter-spacing: 0.05em;
+}
+
+.sku-number {
+    font-size: 12px;
+    font-weight: 700;
+    color: #047857;
+    margin-top: -2px;
+}
+
+.med-name {
+    font-weight: 700;
+    color: #111827;
+}
+
+.stock-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stock-qty {
+    font-weight: 700;
+    color: #111827;
+}
+
+.stock-unit {
+    font-size: 11.5px;
+    color: #9ca3af;
+}
+
+.price-val {
+    font-weight: 700;
+    color: #111827;
+}
+
+.date-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-info span:first-child {
+    color: #111827;
+    font-weight: 500;
+}
+
+.date-info span:last-child {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Badges trạng thái Status (Sử dụng đúng class để backend gán) */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.status-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.status-in-stock {
+    background-color: #ecfdf5;
+    color: #059669;
+}
+
+.status-in-stock .dot {
+    background-color: #10b981;
+}
+
+.status-low-stock {
+    background-color: #ffffff;
+    color: #374151;
+    font-weight: 700;
+    padding: 0;
+}
+
+/* Không có bọc màu nền theo ảnh mẫu */
+
+.status-expired {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
+.status-expired .dot {
+    background-color: #ef4444;
+}
+
+/* Trạng thái rỗng */
+.table-empty-state {
+    padding: 64px 24px;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.inventory-table:has(tbody tr)+.table-empty-state {
+    display: none;
+}
+
+/* Pagination (Phân trang dưới cùng) */
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-top: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+}
+
+.pagination-info {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.num-bold {
+    font-weight: 700;
+    color: #111827;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.page-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.page-btn:hover:not(.disabled) {
+    background-color: #f3f4f6;
+}
+
+.page-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.page-num {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5563;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.page-num:hover {
+    background-color: #f3f4f6;
+}
+
+/* Backend chèn class active cho trang hiện tại */
+.page-num.active {
+    background-color: #ecfdf5;
+    color: #0ea89b;
+}
+
+@media (max-width: 1100px) {
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .local-search-box {
+        max-width: 100%;
+    }
+
+    .filter-actions {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

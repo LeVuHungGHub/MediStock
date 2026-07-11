@@ -1,0 +1,637 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8fafc;
+    color: #111827;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* --- SIDEBAR REUSABLE SYSTEM --- */
+.sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #f3f4f6;
+    margin-bottom: 24px;
+}
+
+.brand-logo-box {
+    width: 36px;
+    height: 36px;
+    background-color: #0ea89b;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.brand-logo-box svg {
+    width: 20px;
+    height: 20px;
+}
+
+.brand-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #111827;
+    line-height: 1.2;
+}
+
+.brand-sub {
+    font-size: 11px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.sidebar-menu {
+    flex: 1;
+}
+
+.menu-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    padding-left: 12px;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.menu-item.active {
+    background-color: #e8f7f4;
+    color: #0ea89b;
+}
+
+.menu-icon {
+    width: 18px;
+    height: 18px;
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+.menu-item.active .menu-icon {
+    color: #0ea89b;
+}
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid #f3f4f6;
+    margin-top: auto;
+}
+
+.user-avatar-box {
+    width: 36px;
+    height: 36px;
+    background-color: #ccfbf1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #0ea89b;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.user-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.user-role {
+    font-size: 11px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* --- MAIN WORKSPACE --- */
+.main-content {
+    margin-left: 260px;
+    flex: 1;
+    padding: 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* NAVBAR HEADER */
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    max-width: 440px;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 13.5px;
+    font-family: inherit;
+    color: #111827;
+}
+
+.search-icon,
+.bell-icon {
+    width: 18px;
+    height: 18px;
+    color: #6b7280;
+    flex-shrink: 0;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.lang-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.dropdown-icon {
+    width: 14px;
+    height: 14px;
+    color: #4b5563;
+}
+
+.notification-badge-container {
+    position: relative;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.small-profile-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #4b5563;
+}
+
+/* WELCOME BLOCK */
+.dashboard-welcome {
+    margin-top: 8px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+/* --- METRICS WIDGET SUMMARY CARDS GRID --- */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.widget-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.widget-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.widget-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.widget-icon-box svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Color classes widgets icons */
+.box-teal {
+    background-color: #e8f7f4;
+    color: #0da89b;
+}
+
+.box-amber {
+    background-color: #fffbeb;
+    color: #d97706;
+}
+
+.box-rose {
+    background-color: #fff1f2;
+    color: #e11d48;
+}
+
+.box-emerald {
+    background-color: #ecfdf5;
+    color: #059669;
+}
+
+.widget-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.widget-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+.text-amber {
+    color: #d97706 !important;
+}
+
+.text-rose {
+    color: #e11d48 !important;
+}
+
+.widget-trend {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+.widget-trend span {
+    font-weight: 700;
+}
+
+.trend-up span {
+    color: #10b981;
+    background-color: #e6f4ea;
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-right: 2px;
+}
+
+/* --- DOUBLE COLUMN CHARTS VIEW AREA --- */
+.charts-double-column {
+    display: grid;
+    grid-template-columns: 2fr 1.3fr;
+    gap: 20px;
+}
+
+.chart-container-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.chart-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.chart-title-box h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.chart-title-box p {
+    font-size: 12.5px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+.chart-wrapper-canvas {
+    position: relative;
+    width: 100%;
+    height: 260px;
+}
+
+/* Category Layout & Custom Legends Inside Donut UI */
+.category-card-layout {
+    justify-content: space-between;
+}
+
+.donut-chart-flex-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    height: 100%;
+    min-height: 220px;
+}
+
+.donut-canvas-area {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+}
+
+.donut-center-total-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.center-qty {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.center-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.donut-legend-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.legend-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.legend-label-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-dot-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-name-text {
+    color: #4b5563;
+}
+
+.legend-percentage-value {
+    color: #111827;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --- CRITICAL INVENTORY DATA TABLE SECTION --- */
+.table-alert-section-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.table-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table-title-box h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.table-title-box p {
+    font-size: 12.5px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+.btn-view-all-table {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #0ea89b;
+    text-decoration: none;
+    padding: 6px 12px;
+    background-color: #e8f7f4;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-view-all-table:hover {
+    background-color: #d1f0ea;
+}
+
+.table-responsive-box {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.alert-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+.alert-data-table th {
+    color: #6b7280;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 12.5px;
+}
+
+.alert-data-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.alert-data-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Table elements detail formatting */
+.medicine-name-cell {
+    font-weight: 700;
+    color: #111827;
+}
+
+.sku-cell-code {
+    font-family: monospace;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.stock-qty-cell {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.status-alert-red {
+    color: #ef4444;
+}
+
+.date-cell-format {
+    color: #4b5563;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Alert Pill Badges Colors matching specific dashboard events */
+.alert-pill {
+    display: inline-flex;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.badge-danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.badge-warning {
+    background-color: #fffbeb;
+    color: #92400e;
+}
